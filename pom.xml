@@ -26,9 +26,9 @@
     <dependencies>
         <!-- Latest Folia (Paper 1.21 compatible) -->
         <dependency>
-            <groupId>io.papermc.folia</groupId>
+            <groupId>dev.folia</groupId>
             <artifactId>folia-api</artifactId>
-            <version>1.21.4-R0.1-SNAPSHOT</version>
+            <version>1.20.4-R0.1-SNAPSHOT</version> <!-- ✅ Abhi ka latest available -->
             <scope>provided</scope>
         </dependency>
     </dependencies>
