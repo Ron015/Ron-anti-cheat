@@ -1540,13 +1540,17 @@ public class c {
                return false;
             }
 
-            Map var49 = this.dm();
-            Map var50 = var2.dm();
-            if (var49 == null) {
-               if (var50 != null) {
-                  return false;
+            label230: {
+               Map var49 = this.dm();
+               Map var50 = var2.dm();
+               if (var49 == null) {
+                  if (var50 == null) {
+                     break label230;
+                  }
+               } else if (var49.equals(var50)) {
+                  break label230;
                }
-            } else if (!var49.equals(var50)) {
+
                return false;
             }
 
