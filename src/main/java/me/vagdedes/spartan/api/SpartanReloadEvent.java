@@ -1,38 +1,32 @@
 package me.vagdedes.spartan.api;
 
-import ai.idealistic.spartan.Register;
+import ai.idealistic.vacan.Register;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.Plugin;
 
 public class SpartanReloadEvent extends Event implements Cancellable {
+   private boolean cancelled = false;
+   private static final HandlerList handlers = new HandlerList();
 
-    private boolean cancelled;
+   public Plugin getPlugin() {
+      return Register.plugin;
+   }
 
-    public SpartanReloadEvent() {
-        cancelled = false;
-    }
+   public boolean isCancelled() {
+      return this.cancelled;
+   }
 
-    public Plugin getPlugin() {
-        return Register.plugin;
-    }
+   public void setCancelled(boolean var1) {
+      this.cancelled = var1;
+   }
 
-    public boolean isCancelled() {
-        return cancelled;
-    }
+   public HandlerList getHandlers() {
+      return handlers;
+   }
 
-    public void setCancelled(boolean b) {
-        this.cancelled = b;
-    }
-
-    private static final HandlerList handlers = new HandlerList();
-
-    public HandlerList getHandlers() {
-        return handlers;
-    }
-
-    public static HandlerList getHandlerList() {
-        return handlers;
-    }
+   public static HandlerList getHandlerList() {
+      return handlers;
+   }
 }

@@ -1,7 +1,6 @@
 package me.vagdedes.spartan.api;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Generated;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -10,46 +9,52 @@ import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
 public class PlayerFoundOreEvent extends Event implements Cancellable {
+   private final Player p;
+   private final String me;
+   private final Location l;
+   private final Material ma;
+   private boolean cancelled;
+   private static final HandlerList handlers = new HandlerList();
 
-    private final Player p;
-    private final String me;
-    private final Location l;
-    private final Material ma;
-    @Setter
-    @Getter
-    private boolean cancelled;
+   public PlayerFoundOreEvent(Player var1, String var2, Location var3, Material var4) {
+      this.p = var1;
+      this.me = var2;
+      this.l = var3;
+      this.ma = var4;
+      this.cancelled = false;
+   }
 
-    public PlayerFoundOreEvent(Player player, String message, Location location, Material material) {
-        p = player;
-        me = message;
-        l = location;
-        ma = material;
-        cancelled = false;
-    }
+   public Player getPlayer() {
+      return this.p;
+   }
 
-    public Player getPlayer() {
-        return p;
-    }
+   public String getMessage() {
+      return this.me;
+   }
 
-    public String getMessage() {
-        return me;
-    }
+   public Location getLocation() {
+      return this.l;
+   }
 
-    public Location getLocation() {
-        return l;
-    }
+   public Material getMaterial() {
+      return this.ma;
+   }
 
-    public Material getMaterial() {
-        return ma;
-    }
+   public HandlerList getHandlers() {
+      return handlers;
+   }
 
-    private static final HandlerList handlers = new HandlerList();
+   public static HandlerList getHandlerList() {
+      return handlers;
+   }
 
-    public HandlerList getHandlers() {
-        return handlers;
-    }
+   @Generated
+   public void setCancelled(boolean var1) {
+      this.cancelled = var1;
+   }
 
-    public static HandlerList getHandlerList() {
-        return handlers;
-    }
+   @Generated
+   public boolean isCancelled() {
+      return this.cancelled;
+   }
 }

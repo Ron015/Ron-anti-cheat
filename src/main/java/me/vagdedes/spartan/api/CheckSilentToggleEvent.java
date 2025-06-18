@@ -1,42 +1,47 @@
 package me.vagdedes.spartan.api;
 
-import ai.idealistic.spartan.abstraction.check.CheckEnums;
-import lombok.Getter;
-import lombok.Setter;
+import ai.idealistic.vacan.abstraction.check.CheckEnums;
+import lombok.Generated;
 import me.vagdedes.spartan.api.system.Enums;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
 public class CheckSilentToggleEvent extends Event implements Cancellable {
+   private final CheckEnums.HackType ht;
+   private final Enums.ToggleAction ta;
+   private boolean cancelled;
+   private static final HandlerList handlers = new HandlerList();
 
-    private final CheckEnums.HackType ht;
-    private final Enums.ToggleAction ta;
-    @Setter
-    @Getter
-    private boolean cancelled;
+   public CheckSilentToggleEvent(CheckEnums.HackType var1, Enums.ToggleAction var2) {
+      this.ht = var1;
+      this.ta = var2;
+      this.cancelled = false;
+   }
 
-    public CheckSilentToggleEvent(CheckEnums.HackType hackType, Enums.ToggleAction toggleAction) {
-        ht = hackType;
-        ta = toggleAction;
-        cancelled = false;
-    }
+   public CheckEnums.HackType getHackType() {
+      return this.ht;
+   }
 
-    public CheckEnums.HackType getHackType() {
-        return ht;
-    }
+   public Enums.ToggleAction getToggleAction() {
+      return this.ta;
+   }
 
-    public Enums.ToggleAction getToggleAction() {
-        return ta;
-    }
+   public HandlerList getHandlers() {
+      return handlers;
+   }
 
-    private static final HandlerList handlers = new HandlerList();
+   public static HandlerList getHandlerList() {
+      return handlers;
+   }
 
-    public HandlerList getHandlers() {
-        return handlers;
-    }
+   @Generated
+   public void setCancelled(boolean var1) {
+      this.cancelled = var1;
+   }
 
-    public static HandlerList getHandlerList() {
-        return handlers;
-    }
+   @Generated
+   public boolean isCancelled() {
+      return this.cancelled;
+   }
 }
